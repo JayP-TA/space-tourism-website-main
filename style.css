@@ -207,8 +207,23 @@ select {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
+  white-space: nowrap; /* added line */ 
   border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl( var(--clr-white) );
+  color: hsl( var(--clr-dark) );
+  padding: .5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
 }
 
 /* Colors */
@@ -334,25 +349,29 @@ select {
 
 @supports (backdrop-filter: blur(1rem)) {
   .primary-navigation {
-    backdrop-filter: blur(3rem) saturate(100%);
-    -webkit-backdrop-filter: blur(3rem) saturate(100%);
-    background-color: rgba(200, 200, 200, 0.01);
+    backdrop-filter: blur(1rem) saturate(100%);
+    -webkit-backdrop-filter: blur(1rem) saturate(100%);
+    background-color: rgba(250, 250, 250, 0.05);
   }
 }
 
 @media (max-width: 35em) {
   .primary-navigation {
     --underline-gap: .5rem;
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 0 30%;
     list-style: none;
     padding: min(4.5rem, 20vh) 2rem;
     margin: 0;
-    font-family: var(--ff-sans-cond);
     flex-direction: column;
-    position: fixed;
-    inset: 0 0 0 30%;
-    z-index: 1000;
-    transform: translateX(100%);
     transition: transform 750ms ease-in-out;
+    transform: translateX(100%);
+  }
+
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0);
+
   }
 
   .primary-navigation.underline-indicators > .active {
@@ -374,9 +393,7 @@ select {
     aspect-ratio: 1;
   }
 
-  .primary-navigation[data-visible="true"] {
-    transform: translateX(0);
-  }
+  
 
   .mobile-nav-toggle[aria-expanded="true"] {
     background-image: url(/assets/shared/icon-close.svg);
@@ -388,15 +405,38 @@ select {
   }
 }
 
-@media (min-width: 35em) and (max-width: 45em) {
+@media (min-width: 35em) {
   .primary-navigation {
-    padding-inline: 3rem;
+    padding-inline: clamp(3rem, 8vw, 7em);
   }
+}
 
+@media (min-width: 35em) and (max-width: 45em) {
   .primary-navigation a > span {
     display: none;
   }
 
+}
+
+@media (min-width: 45em) {
+  .primary-header::after {
+    content: '';
+    display: block;
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin-right: -2.5rem;
+    background: hsl( var( --clr-white) / .25 );
+    order: 1;
+  }
+
+  nav {
+    order: 2;
+  }
+
+  .primary-navigation {
+    margin-block: 2rem;
+  }
 }
 
 .underline-indicators > * {

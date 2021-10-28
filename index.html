@@ -23,10 +23,9 @@
     <script src="/script.js" defer ></script>
   </head>
   <body class="home">
+    <a class="skip-to-content" href="#main">Skip to content</a>
     <header class="primary-header flex">
-      <div>
-        <img src="/assets/shared/logo.svg" alt="space logo" />
-      </div>
+      <img src="./assets/shared/logo.svg" class="logo" alt="space logo" />
       <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
       <nav>
         <ul
@@ -38,35 +37,35 @@
             <a
               class="uppercase text-white letter-spacing-2 ff-sans-cond"
               href="index.html"
-              ><span>00</span>Home</a
+              ><span aria-hidden="true">00</span>Home</a
             >
           </li>
           <li>
             <a
               class="uppercase text-white letter-spacing-2 ff-sans-cond"
               href="destination.html"
-              ><span>01</span>Destination</a
+              ><span aria-hidden="true">01</span>Destination</a
             >
           </li>
           <li>
             <a
               class="uppercase text-white letter-spacing-2 ff-sans-cond"
               href="crew.html"
-              ><span>02</span>Crew</a
+              ><span aria-hidden="true">02</span>Crew</a
             >
           </li>
           <li>
             <a
               class="uppercase text-white letter-spacing-2 ff-sans-cond"
               href="technology.html"
-              ><span>03</span>Technology</a
+              ><span aria-hidden="true">03</span>Technology</a
             >
           </li>
         </ul>
       </nav>
     </header>
 
-    <div class="grid-container grid-container--home">
+    <main id="main" class="grid-container grid-container--home">
       <div>
         <h1 class="text-light ff-sans-cond fs-500 uppercase letter-spacing-1">
           So, you want to travel to
@@ -86,6 +85,7 @@
           >Explore</a
         >
       </div>
-    </div>
+    </main>
+
   </body>
 </html>

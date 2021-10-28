@@ -20,16 +20,19 @@
       rel="stylesheet"
     />
     <title>Space tourism website</title>
+    <script src="/script.js" defer ></script>
   </head>
   <body class="home">
     <header class="primary-header flex">
       <div>
         <img src="/assets/shared/logo.svg" alt="space logo" />
       </div>
-      <!-- <nav>
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
+      <nav>
         <ul
-          class="primary-navigation flex underline-indicators"
-          style="--gap: 12rem"
+          id="primary-navigation"
+          data-visible="false"
+          class="primary-navigation flex underline-indicators fs-300"
         >
           <li class="active">
             <a
@@ -60,7 +63,7 @@
             >
           </li>
         </ul>
-      </nav> -->
+      </nav>
     </header>
 
     <div class="grid-container grid-container--home">

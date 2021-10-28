@@ -98,6 +98,7 @@ body {
   line-height: 1.5;
   display: grid;
   grid-template-rows: min-content 1fr;
+  overflow-x: hidden;
 }
 
 /* A elements that don't have a class get default styles */
@@ -168,7 +169,6 @@ select {
 
 .grid-container {
   text-align: center;
-  outline: 5px solid green;
   display: grid;
   place-items: center;
   padding-inline: 1rem;
@@ -187,12 +187,10 @@ select {
 
   .grid-container > *:first-child {
     grid-column: 2;
-    outline: 1px solid red;
   }
 
   .grid-container > *:last-child {
     grid-column: 3;
-    outline: 1px solid yellow;
   }
 
   .grid-container--home {
@@ -301,12 +299,72 @@ select {
 }
 
 .primary-navigation {
-  --gap: 8rem;
   --underline-gap: 2rem;
   list-style: none;
   padding: 0;
   margin: 0;
   font-family: var(--ff-sans-cond);
+  background: hsl( var(--clr-dark) / 0.95);
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+  .primary-navigation {
+    backdrop-filter: blur(3rem) saturate(100%);
+    -webkit-backdrop-filter: blur(3rem) saturate(100%);
+    background-color: rgba(200, 200, 200, 0.01);
+  }
+}
+
+@media (max-width: 35em) {
+  .primary-navigation {
+    --underline-gap: .5rem;
+    list-style: none;
+    padding: min(4.5rem, 20vh) 2rem;
+    margin: 0;
+    font-family: var(--ff-sans-cond);
+    flex-direction: column;
+    position: fixed;
+    inset: 0 0 0 30%;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 750ms ease-in-out;
+  }
+
+  .primary-navigation.underline-indicators > .active {
+    border: 0;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 2000;
+    right: 1rem;
+    top: 1rem;
+    background: transparent;
+    border: 0;
+    background-image: url(/assets/shared/icon-hamburger.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 1.5rem;
+    aspect-ratio: 1;
+  }
+
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url(/assets/shared/icon-close.svg);
+  }
+
+  .mobile-nav-toggle:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+  }
 }
 
 .primary-navigation a {

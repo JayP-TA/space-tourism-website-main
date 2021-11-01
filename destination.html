@@ -15,7 +15,8 @@
     href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&family=Bellefair&display=swap"
     rel="stylesheet" />
   <title>Space tourism website</title>
-  <script src="/script.js" defer></script>
+  <script src="/navigation.js" defer></script>
+  <script src="/tabs.js" defer></script>
 </head>
 
 <body class="destination">
@@ -71,11 +72,11 @@
       <img src="/assets/destination/image-titan.png" alt="Titan">
     </picture>
 
-    <div class="tab-list underline-indicators flex">
-      <button aria-selected="true" class="uppercase text-light ff-sans-cond letter-spacing-3">Moon</button>
-      <button aria-selected="false" class="uppercase text-light ff-sans-cond letter-spacing-3">Europa</button>
-      <button aria-selected="false" class="uppercase text-light ff-sans-cond letter-spacing-3">Mars</button>
-      <button aria-selected="false" class="uppercase text-light ff-sans-cond letter-spacing-3">Titan</button>
+    <div class="tab-list underline-indicators flex" role="tablist" aria-label="destination list">
+      <button aria-selected="true" role="tab" aria-controls="moon-tab" class="uppercase text-light ff-sans-cond letter-spacing-3" tabindex="0">Moon</button>
+      <button aria-selected="false" role="tab" aria-controls="mars-tab" class="uppercase text-light ff-sans-cond letter-spacing-3" tabindex="-1">Mars</button>
+      <button aria-selected="false" role="tab" aria-controls="europa-tab" class="uppercase text-light ff-sans-cond letter-spacing-3" tabindex="-1">Europa</button>
+      <button aria-selected="false" role="tab" aria-controls="titan-tab" class="uppercase text-light ff-sans-cond letter-spacing-3" tabindex="-1">Titan</button>
     </div>
     <!-- Planet content -->
     <!-- Moon -->

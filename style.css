@@ -463,6 +463,7 @@ select {
   border-radius: 50%;
   width: 5rem;
   border: 1px solid hsl( var(--clr-white) / .25);
+  background-color: transparent;
 }
 
 .number-indicators > *:hover, 
@@ -540,6 +541,25 @@ body {
   }
 }
 
+/* Technology */
+
+.technology {
+  background-image: url(/assets/technology/background-technology-mobile.jpg);
+}
+
+@media (min-width: 35em) {
+  .technology {
+    background-position: center center;
+    background-image: url(/assets/technology/background-technology-tablet.jpg);
+  }
+}
+
+@media (min-width: 45em) {
+  .technology {
+    background-size: cover;
+    background-image: url(/assets/technology/background-technology-desktop.jpg);
+  }
+}
 /* ----------------------------- */
 /*           Layout              */
 /* ----------------------------- */
@@ -600,13 +620,16 @@ body {
 /* Crew Layout */
 
 .grid-container--crew {
-  --flow-space: 2rem;
   grid-template-areas: 
     'title'
     'image'
     'tabs'
     'content';
 }
+
+/* .grid-container--technology .numbered-title {
+  margin-bottom: 0rem;
+} */
 
 .grid-container--crew > picture {
   grid-area: image;
@@ -626,17 +649,54 @@ body {
   color:hsl( var( --clr-white) / .5 )
 }
 
-@media (min-width: 35rem) {
+/* Technology Layout */
+
+.grid-container--technology {
+  --flow-space: 1.5rem;
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-areas: 
+    'title'
+    'image'
+    'tabs'
+    'content';
+}
+
+.grid-container--technology > picture {
+  grid-area: image;
+  width: 100vw;
+  margin-inline: -1rem;
+}
+
+
+.grid-container--technology > picture > img {
+  width: 100%;
+}
+
+
+.grid-container--technology > .number-indicators {
+  grid-area: tabs;
+  max-width: 50%;
+}
+
+.grid-container--technology > .technology-details {
+  grid-area: content;
+}
+
+
+/* Tablet */
+@media (min-width: 35em) and (orientation:portrait) {
   .numbered-title {
     justify-self: start;
     margin-top: 2rem;
   }
 
+  /* Destination Tablet */
   .destination-meta {
     flex-direction: row;
     justify-content: space-evenly;
   }
 
+  /* Crew Tablet */
   .grid-container--crew {
     padding-bottom: 0;
     --flow-space: 2rem;
@@ -646,15 +706,61 @@ body {
       'tabs'
       'image';
   }
+
+  /* Technology Tablet */
+  .grid-container--technology picture {
+    margin-inline: 1rem;
+    width: 80vw;
+  }
+
 }
 
-@media (min-width: 45em) {
+/* Ipad Pro Fix */
+@media (min-width: 45em) and (orientation:portrait) {
+  .grid-container--technology {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0,20rem) minmax(0, 40rem) minmax(0rem, 1fr);
+    grid-template-rows: minmax(1rem, 1fr) minmax(0, 3fr) minmax(0, 6fr);
+    grid-template-areas:
+      '. title title .'
+      '. image image .'
+      '. tabs content .';
+  }
+  
+  .grid-container--technology picture {
+    width: 100vw;
+    align-self: start;
+  }
+  .grid-container--technology article {
+    align-self: start;
+  }
+
+  .number-indicators {
+    flex-direction: column;
+    align-self: start;
+  }
+}
+
+/* Desktop Layout */
+@media (min-width: 45em) and (orientation:landscape) {
+  .numbered-title {
+    justify-self: start;
+    margin-top: 2rem;
+  }
+
   .grid-container {
     text-align: left;
     column-gap: var(--container-gutter, 2rem);
     grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
   }
 
+  /* Destination desktop */
+
+  .destination-meta {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  /* Home Desktop */
   .grid-container--home {
     padding-bottom: max(6rem, 10vh);
     align-items: end;
@@ -667,7 +773,7 @@ body {
   .grid-container--home > *:last-child {
     grid-column: 3;
   }
-
+  /* Destination desktop */
   .grid-container--destination {
     justify-items: start;
     align-content: start;
@@ -678,6 +784,7 @@ body {
   }
   .grid-container--destination > picture {
     max-width: 90%;
+    justify-self: center;
   }
 
   .destination-meta {
@@ -685,6 +792,7 @@ body {
     justify-content: start;
   }
 
+  /* Crew Desktop */
   .grid-container--crew {
     grid-template-columns: minmax(1rem, 1fr) minmax(0, 35rem) minmax(0, 25rem) minmax(1rem, 1fr);
     --flow-space: 2rem;
@@ -697,6 +805,28 @@ body {
   .grid-container--crew > picture {
     grid-column: span 2;
     align-self: end;
-    max-width: 90%;
+    max-width:  80%;
+  }
+
+   /* Tehcnology desktop */
+   .grid-container--technology {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 10rem) minmax(0,40rem) minmax(0, 40rem) minmax(0rem, 1fr);
+    grid-template-rows: minmax(1rem, maxcontent) minmax(0, maxcontent);
+    grid-template-areas:
+      '. title title title title'
+      '. tabs content image image';
+  }
+
+  /* .grid-container--technology article {
+    align-self: start;
+  } */
+
+  .grid-container--technology > picture {
+    max-width: 80%;
+    justify-self: end;
+  align-self: start;  }
+
+  .number-indicators {
+    flex-direction: column;
   }
 }

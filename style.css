@@ -828,5 +828,6 @@ body {
 
   .number-indicators {
     flex-direction: column;
+    align-self: center;
   }
 }

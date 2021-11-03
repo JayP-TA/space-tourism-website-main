@@ -256,7 +256,7 @@ select {
 /* ----------------- */
 
 .large-button {
-  font-size: 2rem;
+  font-size: 1.75rem;
   display: inline-grid;
   position: relative;
   z-index: 1;
@@ -356,8 +356,8 @@ select {
     display: block;
     position: absolute;
     z-index: 2000;
-    right: 1rem;
-    top: 1rem;
+    right: 1.5rem;
+    top: 2.2rem;
     background: transparent;
     border: 0;
     background-image: url(/assets/shared/icon-hamburger.svg);
@@ -663,7 +663,7 @@ body {
 
 .grid-container--technology > picture {
   grid-area: image;
-  width: 100vw;
+  width: 101vw;
   margin-inline: -1rem;
 }
 
@@ -715,8 +715,13 @@ body {
 
 }
 
-/* Ipad Pro Fix */
+/* Ipad Pro Fix
 @media (min-width: 45em) and (orientation:portrait) {
+
+  .grid-container--home .large-button{
+
+  }
+
   .grid-container--technology {
     grid-template-columns: minmax(1rem, 1fr) minmax(0,20rem) minmax(0, 40rem) minmax(0rem, 1fr);
     grid-template-rows: minmax(1rem, 1fr) minmax(0, 3fr) minmax(0, 6fr);
@@ -738,7 +743,7 @@ body {
     flex-direction: column;
     align-self: start;
   }
-}
+} */
 
 /* Desktop Layout */
 @media (min-width: 45em) and (orientation:landscape) {
@@ -764,7 +769,16 @@ body {
   .grid-container--home {
     padding-bottom: max(6rem, 10vh);
     align-items: end;
+    padding-inline: 7rem;
   }
+
+.grid-container--home > :first-child > h1 > span {
+  margin-top: 1rem; 
+}
+
+.grid-container--home > :last-child {
+  justify-self:self-end
+}
 
   .grid-container--home > *:first-child {
     grid-column: 2;

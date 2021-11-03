@@ -569,7 +569,7 @@ body {
   display: grid;
   place-items: center;
   padding-inline: 1rem;
-  padding-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .grid-container p:not([class]) {
@@ -755,7 +755,7 @@ body {
   .grid-container {
     text-align: left;
     column-gap: var(--container-gutter, 2rem);
-    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 25rem) minmax(0, 55rem) minmax(1rem, 1fr);
   }
 
   /* Destination desktop */
@@ -777,8 +777,12 @@ body {
 }
 
 .grid-container--home > :last-child {
-  justify-self:self-end
+  justify-self:self-end;
 }
+
+  .grid-container--home .large-button {
+    font-size: var(--fs-600);
+  }
 
   .grid-container--home > *:first-child {
     grid-column: 2;
